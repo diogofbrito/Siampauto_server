@@ -1,4 +1,4 @@
-const homeController = require('../controllers/homeController');
+/* const homeController = require('../controllers/homeController');
 const clientesController = require('../controllers/clientesController');
 const marcasController = require('../controllers/marcasController');
 const carrosController = require('../controllers/carrosController');
@@ -34,4 +34,12 @@ module.exports = app => {
     
     app.post('/login', loginController.login);
 
-};
+}; */
+
+import { Router } from 'express';
+import { getAllCarsController } from '../modules/cars/controllers/getAllCarsController';
+
+export const routes = Router();
+
+routes.get('/cars', getAllCarsController);
+
