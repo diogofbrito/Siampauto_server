@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getAllCars } from '../services/getAllCars';
+import { getAllCars } from '../services/getAllCarsService';
 
 export async function getAllCarsController(request: Request, response: Response) {
 	try {
@@ -10,3 +10,5 @@ export async function getAllCarsController(request: Request, response: Response)
 		response.status(500).json({ error: 'Erro ao listar carros' });
 	}
 }
+
+

@@ -1,22 +1,20 @@
 import { routes } from './routes';
-import cors from 'cors';
 import express from 'express';
 
 const app = express();
 
 app.use(express.json());
 
-app.use(routes);
+app.use(function (req, res, next) {
+	res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
+	res.setHeader('Access-Control-Allow-Methods', '*');
+	res.setHeader('Access-Control-Allow-Headers', '*');
+	next();
+});
 
-app.use(
-	cors({
-		origin: '*',
-		methods: ['GET', 'POST', 'PUT', 'DELETE'],
-		allowedHeaders: ['Content-Type', 'Authorization'],
-	}),
-);
+app.use(routes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-	console.log(`Servidor rodando na porta ${PORT}`);
+	console.log(`Server running at door ${PORT}`);
 });
