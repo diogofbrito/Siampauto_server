@@ -1,5 +1,5 @@
 ###
-GET http://localhost:3000/carros
+GET http://localhost:3000/cars
 Content-Type: application/json
 Accept: application/json
 
@@ -39,12 +39,12 @@ Accept: application/json
 }
 
 ###
-GET http://localhost:3000/carros/1
+GET http://localhost:3000/cars/1
 Content-Type: application/json
 Accept: application/json
 
 
 ###
-DELETE  http://localhost:3000/carros/2
+DELETE  http://localhost:3000/cars/2
 Content-Type: application/json
 Accept: application/json

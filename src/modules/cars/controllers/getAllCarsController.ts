@@ -7,7 +7,7 @@ export async function getAllCarsController(request: Request, response: Response)
 		response.json(cars);
 	} catch (error) {
 		console.error(error);
-		response.status(500).json({ error: 'Erro ao listar carros' });
+		response.status(500).json({ error: 'Error listing cars.' });
 	}
 }
 

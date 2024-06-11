@@ -11,51 +11,26 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql" // ou o provedor do seu banco de dados
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-model Clientes {
-  id       Int      @id @default(autoincrement())
-  nome     String
-  nif      String   @unique
-  email    String   @unique
-  password String
-  pedidos  pedidos[]
+model User {
+  id        Int      @id @default(autoincrement())
+  fullName  String
+  nif       String   @unique
+  email     String   @unique
+  password  String
+  cars      String[]
+  createdAt DateTime @default(now())
 }
 
-model Carros {
-  id         Int          @id @default(autoincrement())
-  marca_id   Int
-  modelo     String
-  ano        Int
-  mes        Int
-  cor        String
-  combustivel String
-  fotosCarros FotosCarros[]
-  marca      Marca        @relation(fields: [marca_id], references: [id])
-  pedidos    pedidos[]
-}
-
-model FotosCarros {
-  id       Int     @id @default(autoincrement())
-  url      String
-  carrosId Int
-  carros   Carros  @relation(fields: [carrosId], references: [id])
-}
-
-model Marca {
-  id       Int          @id @default(autoincrement())
-  nome     String
-  carros   Carros[]
-}
-
-model pedidos {
-  id           Int       @id @default(autoincrement())
-  cliente_id   Int
-  carros_id    Int
-  data_criacao DateTime
-  valor        Float
-  clientes     Clientes  @relation(fields: [cliente_id], references: [id])
-  carros       Carros    @relation(fields: [carros_id], references: [id])
+model Car {
+  id           Int    @id @default(autoincrement())
+  brand        String
+  model        String
+  registration String
+  mileage      Float
+  fuelType     String
+  ownerId      Int
 }

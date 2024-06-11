@@ -14,7 +14,7 @@ app.use(function (req, res, next) {
 
 app.use(routes);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3002;
 app.listen(PORT, () => {
-	console.log(`Server running at door ${PORT}`);
+	console.log(`Server running at ${PORT}`);
 });
