@@ -15,6 +15,10 @@ export async function loginService(logginInputs: LogginInputs) {
 
 	const passwordMatch = await bcrypt.compare(logginInputs.password, userExists.password);
 
+	if (!passwordMatch) {
+		throw new Error('Password not exists');
+	}
+
 	const token = jwt.sign({ userId: userExists.id }, 'meu token em jwt', { expiresIn: '1h' });
 
 	return { user: userExists, token };

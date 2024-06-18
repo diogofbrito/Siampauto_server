@@ -3,8 +3,8 @@ import { createUserService } from '../services/createUserService';
 
 export async function signUpController(request: Request, response: Response) {
 	try {
-		const { fullName, email, password, nif, codValidacao } = request.body;
-		const signUpData = await createUserService({ fullName, email, password, nif , codValidacao});
+		const { fullName, email, password, nif, validationCode } = request.body;
+		const signUpData = await createUserService({ fullName, email, password, nif, validationCode });
 		response.json(signUpData);
 	} catch (error) {
 		console.error(error);

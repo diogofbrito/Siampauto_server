@@ -8,7 +8,7 @@ interface IUserInputs {
 	email: string;
 	password: string;
 	nif: string;
-	codValidacao: string;
+	validationCode: string;
 }
 export async function createUserService(userInputs: IUserInputs) {
 	const userExists = await userRepository.findByEmail(userInputs.email);
@@ -23,13 +23,13 @@ export async function createUserService(userInputs: IUserInputs) {
 		throw new Error('Nif number already exists');
 	}
 
-	if (!userInputs.codValidacao) {
+	if (!userInputs.validationCode) {
 		throw new Error('Validation code is required');
 	}
 
 	const cars = await getAllCars();
 
-	const carExist = cars.find(car => car.ID === parseInt(userInputs.codValidacao));
+	const carExist = cars.find(car => car.ID === parseInt(userInputs.validationCode));
 
 	if(!carExist) {
 		throw new Error('CarID not found');
@@ -37,7 +37,7 @@ export async function createUserService(userInputs: IUserInputs) {
 
 	const passwordHash = await bcrypt.hash(userInputs.password, 10);
 
-	const user = await userRepository.create(userInputs.fullName, userInputs.email, passwordHash, userInputs.nif, userInputs.codValidacao);
+	const user = await userRepository.create(userInputs.fullName, userInputs.email, passwordHash, userInputs.nif, userInputs.validationCode);
 
 	const token = jwt.sign({ userId: user.id }, 'meu token em jwt', { expiresIn: '1h' });
 
