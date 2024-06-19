@@ -1,5 +1,12 @@
 import { prisma } from '../prisma';
 
+interface UpdateInput {
+	dateBirth: Date;
+	address: string;
+	city: string;
+	phoneNumber: string;
+}
+
 export const userRepository = {
 	async create(fullName: string, email: string, password: string, nif: string, validationCode: string) {
 		const user = {
@@ -15,6 +22,10 @@ export const userRepository = {
 		return newUser;
 	},
 
+	async updateProfile(id: number, data: UpdateInput) {
+		return prisma.user.update({ where: { id }, data: { dateBirth: data.dateBirth, address: data.address, city: data.city, phoneNumber: data.phoneNumber } });
+	},
+
 	async findByEmail(email: string) {
 		const user = await prisma.user.findUnique({ where: { email } });
 		return user;
@@ -28,5 +39,9 @@ export const userRepository = {
 	async findByNif(nif: string) {
 		const user = await prisma.user.findUnique({ where: { nif } });
 		return user;
+	},
+
+	async deleteProfile(id: number) {
+		return prisma.user.delete({ where: { id } });
 	},
 };
