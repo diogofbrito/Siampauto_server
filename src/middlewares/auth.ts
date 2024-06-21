@@ -15,7 +15,7 @@ export async function auth(request: Request): Promise<{ id: number }> {
 			throw new Error('Invalid access token');
 		}
 
-		const payload = (await jwt.verify(token, 'meu token em jwt')) as { userId: number };
+		const payload = jwt.verify(token, 'meu token em jwt') as { userId: number };
 
 		return {
 			id: payload.userId as unknown as number,

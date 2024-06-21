@@ -13,10 +13,13 @@ export interface Vehicle {
 	Fuel: string;
 	Doors: number;
 	Color: string;
-	CC: number;
+	Seats: number;
+	CC: number | string;
+	HP: number ;
 	Kms: number;
 	EquipmentList: string[];
 	Price: number;
+	Obs: string;
 	PhotoList: { Photo: string }[];
 }
 
@@ -52,9 +55,12 @@ export async function getAllCars(): Promise<Vehicle[]> {
 			Fuel: vehicle.Fuel,
 			Doors: parseInt(vehicle.Doors, 10),
 			Color: vehicle.Color,
-			CC: parseInt(vehicle.CC, 10),
+			CC: vehicle.CC ? parseInt(vehicle.CC, 10) : '-',
+			HP: parseInt(vehicle.HP, 10),
 			Kms: parseInt(vehicle.Kms, 10),
-			EquipmentList: Array.isArray(vehicle.EquipmentList?.Equipment) ? vehicle.EquipmentList?.Equipment.map((item: any) => item) : [],
+			Seats: parseInt(vehicle.Seats, 10),
+			Obs: vehicle.Obs,
+			EquipmentList: vehicle.EquipmentList ? vehicle.EquipmentList.split(', ') : [], 
 			Price: parseFloat(vehicle.Price),
 			PhotoList: Array.isArray(vehicle.PhotoList?.Photo) ? vehicle.PhotoList.Photo.map((photo: any) => ({ Photo: photo })) : [],
 		}));
