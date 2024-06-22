@@ -9,6 +9,7 @@ import { createNoteController } from '../modules/notes/controllers/createNoteCon
 import { getNotesByUserIdController } from '../modules/notes/controllers/getNotesByUserIdController';
 import { updateNoteController } from '../modules/notes/controllers/updateNoteController';
 import { deleteNoteController } from '../modules/notes/controllers/deleteNoteController';
+import { getNewsController } from '../modules/news/controller/getNewsController';
 
 export const routes = Router();
 
@@ -24,3 +25,5 @@ routes.post('/notes', createNoteController);
 routes.get('/notes', getNotesByUserIdController);
 routes.put('/notes', updateNoteController);
 routes.delete('/notes', deleteNoteController);
+
+routes.get('/api/news/automobiles', getNewsController);

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { createNoteService } from '../services/createNoteService';
-import { auth } from '../../../middlewares/auth'
+import { auth } from '../../../middlewares/auth';
 
 export async function createNoteController(request: Request, response: Response) {
 	try {
@@ -20,4 +20,3 @@ export async function createNoteController(request: Request, response: Response)
 		response.status(500).json({ error: 'Error creating note' });
 	}
 }
- 

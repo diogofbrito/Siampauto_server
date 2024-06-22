@@ -15,8 +15,6 @@ export const notesRepository = {
             content
 		};
 
-		console.log('Creating note:', note);
-
 		const newNote = await prisma.note.create({ data: note });
 
 		return newNote;
@@ -28,10 +26,7 @@ export const notesRepository = {
 	},
 
 	async findByUserId(id: number) {
-		console.log('Searching for user by user id:', id);
 		const user = await prisma.note.findMany({ where: { userId: id } });
-		console.log('User found by id:', user);
-
 		return user;
 	},
 

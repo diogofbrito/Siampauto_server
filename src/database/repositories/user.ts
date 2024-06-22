@@ -17,19 +17,12 @@ export const userRepository = {
 			validationCode,
 		};
 
-		console.log('Creating user:', user);
-
 		const newUser = await prisma.user.create({ data: user });
-
 		return newUser;
 	},
 
 	async findByEmail(email: string) {
-		console.log('Searching for user by email:', email);
-
 		const user = await prisma.user.findUnique({ where: { email } });
-		console.log('User found by email:', user);
-
 		return user;
 	},
 
@@ -38,11 +31,7 @@ export const userRepository = {
 	},
 
 	async findById(id: number) {
-		console.log('Searching for user by id:', id);
-
 		const user = await prisma.user.findUnique({ where: { id } });
-		console.log('User found by id:', user);
-
 		return user;
 	},
 
