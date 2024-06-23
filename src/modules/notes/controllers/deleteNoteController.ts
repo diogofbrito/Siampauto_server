@@ -3,9 +3,9 @@ import { deleteNoteService } from '../services/deleteNoteService';
 
 export async function deleteNoteController(request: Request, response: Response) {
 	try {
-		const { id } = request.body;
+		const { id } = request.params;
 
-		const deletedNote = await deleteNoteService(id);
+		const deletedNote = await deleteNoteService(Number(id));
 
 		response.json(deletedNote);
 	} catch (error) {

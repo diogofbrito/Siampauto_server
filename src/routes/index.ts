@@ -18,12 +18,12 @@ routes.get('/cars', getAllCarsController);
 routes.post('/signup', signUpController);
 routes.post('/login', logginController);
 routes.get('/profile', profileController);
-routes.patch('/update', updateController);
+routes.put('/update', updateController);
 routes.delete('/delete', deleteController);
 
 routes.post('/notes', createNoteController);
 routes.get('/notes', getNotesByUserIdController);
-routes.put('/notes', updateNoteController);
-routes.delete('/notes', deleteNoteController);
+routes.put('/notes/:id', updateNoteController);
+routes.delete('/notes/:id', deleteNoteController);
 
 routes.get('/api/news/automobiles', getNewsController);

@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { updateNoteService } from '../services/updateNoteService';
 
+
 export async function updateNoteController(request: Request, response: Response) {
 	try {
 		const { id, title, date, content } = request.body;

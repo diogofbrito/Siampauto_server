@@ -2,7 +2,7 @@ import { prisma } from '../prisma';
 
 interface UpdateInput {
     title: string;
-    date: string;
+    date: Date;
 	content: string;
 }
 

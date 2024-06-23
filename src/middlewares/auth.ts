@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 
 export async function auth(request: Request): Promise<{ id: number }> {
 	const { authorization } = request.headers;
+	
 
 	if (!authorization) {
 		throw new Error('Invalid access token');

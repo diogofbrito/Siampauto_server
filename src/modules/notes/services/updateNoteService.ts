@@ -3,7 +3,7 @@ import { notesRepository } from '../../../database/repositories/notes';
 interface UpdateNoteInput {
 	id: number;
 	title: string;
-	date: string;
+	date: Date;
 	content: string;
 }
 
