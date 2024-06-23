@@ -41,6 +41,7 @@ export const userRepository = {
 	},
 
 	async deleteProfile(id: number) {
+		await prisma.note.deleteMany({ where: { userId: id } });
 		return prisma.user.delete({ where: { id } });
 	},
 };

@@ -10,6 +10,7 @@ import { getNotesByUserIdController } from '../modules/notes/controllers/getNote
 import { updateNoteController } from '../modules/notes/controllers/updateNoteController';
 import { deleteNoteController } from '../modules/notes/controllers/deleteNoteController';
 import { getNewsController } from '../modules/news/controller/getNewsController';
+import { getWeatherController } from '../modules/weather/controller/getWeatherController';
 
 export const routes = Router();
 
@@ -27,3 +28,5 @@ routes.put('/notes/:id', updateNoteController);
 routes.delete('/notes/:id', deleteNoteController);
 
 routes.get('/api/news/automobiles', getNewsController);
+
+routes.get('/api/weather', getWeatherController);
