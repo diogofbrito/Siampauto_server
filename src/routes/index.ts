@@ -7,7 +7,6 @@ import { updateController } from '../modules/auth/controllers/updateController';
 import { deleteController } from '../modules/auth/controllers/deleteController';
 import { createNoteController } from '../modules/notes/controllers/createNoteController';
 import { getNotesByUserIdController } from '../modules/notes/controllers/getNotesByUserIdController';
-import { updateNoteController } from '../modules/notes/controllers/updateNoteController';
 import { deleteNoteController } from '../modules/notes/controllers/deleteNoteController';
 import { getNewsController } from '../modules/news/controller/getNewsController';
 import { getWeatherController } from '../modules/weather/controller/getWeatherController';
@@ -19,12 +18,11 @@ routes.get('/cars', getAllCarsController);
 routes.post('/signup', signUpController);
 routes.post('/login', logginController);
 routes.get('/profile', profileController);
-routes.put('/update', updateController);
+routes.patch('/update', updateController);
 routes.delete('/delete', deleteController);
 
 routes.post('/notes', createNoteController);
 routes.get('/notes', getNotesByUserIdController);
-routes.put('/notes/:id', updateNoteController);
 routes.delete('/notes/:id', deleteNoteController);
 
 routes.get('/api/news/automobiles', getNewsController);

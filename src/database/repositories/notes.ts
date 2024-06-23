@@ -1,11 +1,5 @@
 import { prisma } from '../prisma';
 
-interface UpdateInput {
-    title: string;
-    date: Date;
-	content: string;
-}
-
 export const notesRepository = {
 	async create(title: string, date: Date, content: string, userId: number) {
 		const note = {
@@ -20,10 +14,6 @@ export const notesRepository = {
 		return newNote;
 	},
 
-
-	async updateNote(id: number, data: UpdateInput) {
-		return prisma.note.update({ where: { id }, data: { title: data.title, content: data.content, date: data.date } });
-	},
 
 	async findByUserId(id: number) {
 		const user = await prisma.note.findMany({ where: { userId: id } });
